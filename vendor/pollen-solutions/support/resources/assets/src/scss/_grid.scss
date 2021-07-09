@@ -1,0 +1,109 @@
+// Variables
+$grid-cols: 12 !default;
+$grid-gutters: 15 !default;
+$grid-breakpoints: (
+    xl:1140,
+    lg:960,
+    md:720,
+    sm:540
+) !default;
+
+// Styles
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  width: 100%;
+  padding-right: #{$grid-gutters}px;
+  padding-left: #{$grid-gutters}px;
+  margin-right: auto;
+  margin-left: auto;
+
+  .container {
+    width:100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 576px) {
+  .container, .container-sm {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container, .container-sm, .container-md {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container, .container-sm, .container-md, .container-lg {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 1140px;
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: #{$grid-gutters}px;
+
+  > * {
+    grid-column-end: span #{$grid-cols};
+  }
+}
+
+@for $i from 1 through $grid-cols {
+  .col-#{$i} {
+    grid-column-end: span #{$i};
+  }
+}
+
+@media (min-width: 576px) {
+  @for $i from 1 through $grid-cols {
+    .col-sm-#{$i} {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  @for $i from 1 through $grid-cols {
+    .col-md-#{$i} {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  @for $i from 1 through $grid-cols {
+    .col-lg-#{$i} {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  @for $i from 1 through $grid-cols {
+    .col-xl-#{$i} {
+      grid-column-end: span #{$i};
+    }
+  }
+}
