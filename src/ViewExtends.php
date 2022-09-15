@@ -14,6 +14,7 @@ use Pollen\ViewExtends\Extensions\AssetViewExtension;
 use Pollen\ViewExtends\Extensions\FieldViewExtension;
 use Pollen\ViewExtends\Extensions\FormViewExtension;
 use Pollen\ViewExtends\Extensions\PartialViewExtension;
+use Pollen\ViewExtends\Extensions\SourceViewExtension;
 use Psr\Container\ContainerInterface as Container;
 
 class ViewExtends implements ViewExtendsInterface
@@ -49,6 +50,7 @@ class ViewExtends implements ViewExtendsInterface
             $this->viewManager()->registerExtension('field', FieldViewExtension::class, true);
             $this->viewManager()->registerExtension('form', FormViewExtension::class, true);
             $this->viewManager()->registerExtension('partial', PartialViewExtension::class, true);
+            $this->viewManager()->registerExtension('source', SourceViewExtension::class, true);
 
             $this->setBooted();
         }

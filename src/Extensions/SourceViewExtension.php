@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Pollen\ViewExtends\Extensions;
 
-use Pollen\Asset\Types\PathTypeInterface;
-use Pollen\Support\Proxy\AssetProxy;
+use Pollen\Support\Proxy\AppProxy;
 use Pollen\View\Engines\Plates\PlatesViewEngine;
 use Pollen\View\Engines\Twig\TwigViewEngine;
 use Pollen\View\ViewEngineInterface;
@@ -13,9 +12,9 @@ use Pollen\View\ViewExtension;
 use Pollen\ViewBlade\BladeViewEngine;
 use Twig\TwigFunction;
 
-class AssetViewExtension extends ViewExtension
+class SourceViewExtension extends ViewExtension
 {
-    use AssetProxy;
+    use AppProxy;
 
     /**
      * @inheritDoc
@@ -65,11 +64,8 @@ class AssetViewExtension extends ViewExtension
         return null;
     }
 
-    protected function getFunction(string $name): ?string
+    protected function getFunction(string $path): ?string
     {
-        $asset = $this->asset($name);
-        $type = $asset->getType();
-
-       return $type instanceof PathTypeInterface ? $type->getPath() : $type->render();
+        return file_get_contents($this->app()->getPublicPath($path));
     }
 }

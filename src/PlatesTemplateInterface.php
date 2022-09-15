@@ -13,6 +13,7 @@ use Pollen\View\Engines\Plates\PlatesTemplateInterface as BasePlatesTemplateInte
  * @method string field(string $alias, string|array $idOrParams = null, array|null $params = null)
  * @method string form(?string $name = null)
  * @method string partial(string $alias, string|array $idOrParams = null, array|null $params = null)
+ * @method string source(string $path)
  */
 interface PlatesTemplateInterface extends BasePlatesTemplateInterface
 {
